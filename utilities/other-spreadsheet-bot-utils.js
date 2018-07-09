@@ -77,15 +77,21 @@ function sendRichEmbedOther(result, msg) {
       (botUtils.returnMultiplier(entry)) : ('N/A');
     let source = entry.source;
     let target = entry.target;
+    let type = entry.type;
+    let school = entry.school;
+    let element = botUtils.returnElement(entry);
     let embed = new RichEmbed()
       .setTitle(name)
       .setDescription(description)
       .setColor('#bfdaff')
       .addField('Source', source, true)
+      .addField('Type', type, true)
+      .addField('School', school, true)
+      .addField('Element', element, true)
       .addField('Target', target, true)
-      .addField('Cast time', time)
-      .addField('Soul Break charge', sb, true)
-      .addField('Multiplier', multiplier, true);
+      .addField('Multiplier', multiplier, true)
+      .addField('Cast time', time, true)
+      .addField('Soul Break charge', sb, true);
     msg.channel.send({embed})
       .then( (resolve) => {
         fulfill(resolve);
